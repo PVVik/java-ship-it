@@ -12,11 +12,7 @@ public abstract class Parcel {
 
     private final int sendDay;
 
-    public static final int PRICE_FOR_STANDARD = 2;
-
-    public static final int PRICE_FOR_FRAGILE = 3;
-
-    public static final int PRICE_FOR_PERISHABLE = 4;
+    private int price;
 
     public Parcel(String description, int weight, String deliveryAddress, int sendDay) {
         this.description = description;
@@ -33,7 +29,13 @@ public abstract class Parcel {
         System.out.println("Посылка " + getDescription() + " доставлена по адресу " + getDeliveryAddress());
     }
 
-    public abstract int calculateDeliveryCost();
+    public int calculateDeliveryCost() {
+     return getWeight() * getPrice();
+    }
+
+    public int getPrice() {
+        return price;
+    }
 
     public String getDescription() {
         return description;
